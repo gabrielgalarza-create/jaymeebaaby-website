@@ -1,0 +1,13 @@
+# PREVIEW GUARD — this file is configured for the GitHub Pages preview.
+# When the site goes live on jaymeebaaby.com, replace the whole file with:
+#
+#   User-agent: *
+#   Allow: /
+#
+#   Sitemap: https://www.jaymeebaaby.com/sitemap.xml
+#
+# ...and remove the <meta name="robots" content="noindex,nofollow"> tag from
+# all six .html files (search for "PREVIEW GUARD").
+
+User-agent: *
+Disallow: /
