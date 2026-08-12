@@ -1,7 +1,16 @@
 # Jaymeebaaby — Website Redesign
 
+**Live preview:** https://gabrielgalarza-create.github.io/jaymeebaaby-website/
+
 Static HTML/CSS/JS rebuild of jaymeebaaby.com, rebuilt around one job: **turn traffic into
 booked weddings, corporate events and private parties at higher prices.**
+
+> ⚠️ **The preview is public but deliberately not indexable.** Every page carries
+> `<meta name="robots" content="noindex,nofollow">` and `robots.txt` disallows everything.
+> Two reasons: the testimonials are placeholders and shouldn't show up in search attached
+> to a real business, and a second live copy of the site would compete with
+> jaymeebaaby.com for "Bay Area wedding DJ." Removing the guard is step 1 of going live —
+> see below.
 
 ---
 
@@ -168,9 +177,27 @@ Then open http://localhost:4321.
 
 ## Deploying
 
-It's plain static files — Netlify, Vercel, Cloudflare Pages or GitHub Pages will all host
-it for free. Drag the folder into Netlify, then point the `jaymeebaaby.com` DNS at it and
-cancel Wix.
+Already deployed to GitHub Pages from `main` (root). Any push to `main` republishes in
+about a minute:
+
+```bash
+git add -A && git commit -m "your message" && git push
+```
+
+### Going live on jaymeebaaby.com
+
+1. **Remove the preview guard.** Delete the `<meta name="robots" content="noindex,nofollow">`
+   tag and its comment from all six `.html` files (search for `PREVIEW GUARD`), and replace
+   `robots.txt` with the four-line version noted at the top of that file. **Do this only
+   after the testimonials are real** — see the launch checklist above.
+2. **Point the domain.** In the repo: Settings → Pages → Custom domain → `www.jaymeebaaby.com`.
+   Then at your DNS provider add a `CNAME` for `www` → `gabrielgalarza-create.github.io`.
+   Leave "Enforce HTTPS" checked once the cert provisions.
+3. **Cancel Wix** once DNS has propagated and the new site resolves.
+4. Submit `sitemap.xml` in Google Search Console.
+
+It's plain static files, so Netlify, Vercel or Cloudflare Pages are equally fine if you'd
+rather host elsewhere — the folder works as-is on any of them.
 
 If she'd rather stay on Wix, this repo works as the design and copy spec — but Wix will
 fight the typography and the layout, and it's the reason the current site loads slowly.
